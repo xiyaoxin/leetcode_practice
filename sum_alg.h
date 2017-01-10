@@ -11,4 +11,7 @@ int fourSumCount(std::vector<int>& A, std::vector<int>& B, std::vector<int>& C, 
 // The solution set must not contain duplicate quadruplets
 std::vector<std::vector<int>> fourSum(std::vector<int>& nums, int target); 
 
+// 15 3Sum
+// Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero
+std::vector<std::vector<int>> threeSum(std::vector<int>& nums); 
 #endif

@@ -64,3 +64,31 @@ vector<vector<int>> fourSum(vector<int>& nums, int target) {
     }
     return result;
 }
+
+// 15 3Sum
+// Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero
+vector<vector<int>> threeSum(vector<int>& nums) {
+    vector<vector<int>> result;
+    if (3 > nums.size()) return result; // The array size needs to be at least 3
+
+    // sort the array first
+    sort(nums.begin(), nums.end());
+
+    // Outer loop determine the starting element for 3sum search
+    for(int i = 0; i < nums.size() - 2; i++) {
+        int lo = i + 1;
+        int hi = nums.size() - 1;
+        while (lo < hi) {
+            if (nums[lo] + nums[hi] < -nums[i]) lo++;
+            else if (nums[lo] + nums[hi] > -nums[i]) hi--;
+            else {
+                vector<int> entry = {nums[i], nums[lo], nums[hi]};  // note that this initialization method is only valid after C++11 standard
+                result.push_back(entry);
+                while (++lo < hi && nums[lo] == nums[lo - 1]);
+                while (lo < --hi && nums[hi] == nums[hi + 1]);
+            }
+        }
+        while (i < nums.size() - 1 && nums[i] == nums[i + 1]) i++;
+    }
+    return result;
+}
