@@ -1,0 +1,8 @@
+In file included from tree.cpp:3:0:
+tree.h:5:8: error: redefinition of ‘struct TreeNode’
+ struct TreeNode {
+        ^
+In file included from <command-line>:0:0:
+./tree.h:5:8: error: previous definition of ‘struct TreeNode’
+ struct TreeNode {
+        ^
