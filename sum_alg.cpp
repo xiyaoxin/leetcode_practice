@@ -1,5 +1,6 @@
 #include <vector>
 #include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 // 454 4Sum II
@@ -24,5 +25,42 @@ int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D)
         }
     }
 
+    return result;
+}
+
+// 18 4Sum
+// Given an array S of n integers, are there elements a, b, c and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target
+// The solution set must not contain duplicate quadruplets
+vector<vector<int>> fourSum(vector<int>& nums, int target) {
+    vector<vector<int>> result;
+    if (4 > nums.size()) return result;     // The array size needs to be at least 4
+
+    // sort the array first
+    sort (nums.begin(), nums.end());
+
+    // Outer two loops defines the boundary of searching
+    for(int i = 0; i < nums.size() - 3; i++) {
+        if ((nums[i] << 2) > target) return result;      // If the smallest element in this 4 number group is larget than target / 4,
+                                                        // then there is no solution beyond the element
+        for(int j = nums.size() - 1; j >= i + 3; j--) {
+            if ((nums[j] << 2) < target) break;
+            int lo = i + 1;
+            int hi = j - 1;
+            while (lo < hi) {
+                int rem = target - nums[i] - nums[j];
+                if (nums[lo] + nums[hi] > rem) lo++;    // adjusting the lo and hi to find a match of rem
+                else if (nums[lo] + nums[hi] > rem) hi--;
+                else {
+                    // a match is found
+                    vector<int> entry = {nums[i], nums[lo], nums[hi], nums[j]}; // note that this initialization method is only valid after C++11 standard
+                    result.push_back(entry);
+                    while (++lo < hi && nums[lo] == nums[lo - 1]);
+                    while (lo < --hi && nums[hi] == nums[hi + 1]);
+                }
+                while (j > i && nums[j] == nums[j - 1]) --j;
+            }
+            while (i < nums.size() && nums[i] == nums[i + 1]) ++i;
+        }
+    }
     return result;
 }
