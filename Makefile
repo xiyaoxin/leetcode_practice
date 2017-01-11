@@ -25,6 +25,9 @@ RM = rm
 all: $(OBJS)
 	$(CC) -o $(TARGET)  $(OBJS) 
 
+# temporarily the main entrace to test all the problem solutions
+# expecting constant changes over the time. 
+# TODO: Replace the main function with testing cases
 leetcode.o: $(SRCS) $(INCLUDES)
 	$(CC) $(CFLAGS) -c leetcode.cpp
 
