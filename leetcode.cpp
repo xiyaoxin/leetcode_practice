@@ -5,12 +5,9 @@
 using namespace std;
 
 int main() {
-    vector<int> A = {1, 2};
-    vector<int> B = {-2, -1};
-    vector<int> C = {-1, 2};
-    vector<int> D = {0, 2};
-
-    int result = fourSumCount(A, B, C, D);
-    cout << "4Sum count: " << result << endl;
+    vector<int> nums = {-2, 0, 1, 3, -5, 3, 5, 7, 9, 10, -6, 0, 0, 10};
+    int target = 5;
+    int result = threeSumSmaller(nums, target);
+    cout << "The result is " << result << endl;
     return 0;
 }
