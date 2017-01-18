@@ -14,4 +14,10 @@ std::vector<std::vector<int>> fourSum(std::vector<int>& nums, int target);
 // 15 3Sum
 // Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero
 std::vector<std::vector<int>> threeSum(std::vector<int>& nums); 
+
+// 16 3Sum Closest Given an array S of n integers, find three integers in  such
+// that the sum is closest to a given number, target. Return the sum of the
+// three integers. You may assume that each input would have exactly one
+// solution
+int threeSumClosest(std::vector<int>& nums, int target);
 #endif

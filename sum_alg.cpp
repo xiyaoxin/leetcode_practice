@@ -92,3 +92,38 @@ vector<vector<int>> threeSum(vector<int>& nums) {
     }
     return result;
 }
+
+// 16 3Sum Closest Given an array S of n integers, find three integers in  such
+// that the sum is closest to a given number, target. Return the sum of the
+// three integers. You may assume that each input would have exactly one
+// solution
+int threeSumClosest(vector<int>& nums, int target) {
+    if (3 > nums.size()) return 0;
+
+    // sort the array
+    sort(nums.begin(), nums.end());
+
+    int gap = abs(target - nums[0] - nums[1] - nums[2]);
+    int result = nums[0] + nums[1] + nums[2];
+
+    // define the left boundary
+    for (int i = 0; i < nums.size() - 2; i++) {
+        int lo = i + 1;
+        int hi = nums.size() - 1;
+        while (lo < hi) {
+            int sum_temp = nums[i] + nums[lo] + nums[hi];
+            int rem = target - sum_temp;
+            if (rem > 0) lo++;
+            else if (rem < 0) hi--;
+            else {
+                return sum_temp;
+            }
+            if (abs(rem) < gap) {
+                gap = abs(rem);
+                result = sum_temp;
+            }
+        }
+        while (i < nums.size() - 1 && nums[i + 1] == nums[i]) i++;
+    }
+    return result;
+}
