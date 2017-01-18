@@ -27,3 +27,27 @@ TreeNode* buildTreeSub(std::vector<int>& inorder, int inBegin, int inEnd, std::v
 TreeNode* buildTree(std::vector<int>& inorder, std::vector<int>& postorder) {
     return buildTreeSub(inorder, 0, inorder.size(), postorder, 0, postorder.size());
 }
+
+// 437 Path Sum III You are given a binary tree in which each node contains an
+// integer value Find the number of paths that sum to a given value The path
+// does not need to start or end at the root or a leaf, but it must go
+// downwards (travelling only from parent nodes to child nodes) The tree has no
+// more than 1,000 nodes and the value are in the range -1,000,000 to 1,000,000
+void pathSumSub(TreeNode* root, std::vector<int>& trace, int& result, int sum) {
+    if (NULL == root) return;
+    trace.push_back(root->val);
+    for(int traceSum = 0, i = trace.size() - 1; i >= 0; i--) {
+        traceSum += trace[i];
+        if (traceSum == sum) result++;
+    }
+    pathSumSub(root->left, trace, result, sum);
+    pathSumSub(root->right, trace, result, sum);
+    trace.pop_back();
+}
+
+int pathSum(TreeNode* root, int sum) {
+    int result = 0;
+    std::vector<int> trace;
+    pathSumSub(root, trace, result, sum);
+    return result;
+}
