@@ -1,5 +1,7 @@
 #include <cstddef>
 #include <vector>
+#include <limits>
+#include <algorithm>
 #include "tree.h"
 
 TreeNode* buildTreeSub(std::vector<int>& inorder, int inBegin, int inEnd, std::vector<int>& postorder, int postBegin, int postEnd) {
@@ -49,5 +51,30 @@ int pathSum(TreeNode* root, int sum) {
     int result = 0;
     std::vector<int> trace;
     pathSumSub(root, trace, result, sum);
+    return result;
+}
+
+// 124 Binary Tree Maximum Path Sum Given a binary tree, find the maximum path
+// sum For this problem, a path is defined as any sequence of nodes from
+// starting node to any node in the tree along the parent-child connections.
+// The path must contain at least one node and does not need to go through the
+// root
+int maxPathSumHelper(TreeNode* root, int& result) {
+    if (NULL == root) return 0;
+    else {
+        int leftSum = maxPathSumHelper(root->left, result);
+        int rightSum = maxPathSumHelper(root->right, result);
+
+        leftSum = leftSum > 0 ? leftSum : 0;
+        rightSum = rightSum > 0 ? rightSum : 0;
+
+        result = std::max(result, root->val + leftSum + rightSum);
+        return root->val + std::max(leftSum, rightSum);
+    }
+}
+
+int maxPathSum(TreeNode* root) {
+    int result = std::numeric_limits<int>::min();
+    maxPathSumHelper(root, result);
     return result;
 }

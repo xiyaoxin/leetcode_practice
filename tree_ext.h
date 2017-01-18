@@ -9,4 +9,11 @@ TreeNode* buildTree(std::vector<int>& inorder, std::vector<int>& postorder);
 // downwards (travelling only from parent nodes to child nodes) The tree has no
 // more than 1,000 nodes and the value are in the range -1,000,000 to 1,000,000
 void pathSum(TreeNode* root, std::vector<int>& trace, int& result, int sum); 
+
+// 124 Binary Tree Maximum Path Sum Given a binary tree, find the maximum path
+// sum For this problem, a path is defined as any sequence of nodes from
+// starting node to any node in the tree along the parent-child connections.
+// The path must contain at least one node and does not need to go through the
+// root
+int maxPathSum(TreeNode* root); 
 #endif
