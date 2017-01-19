@@ -1,6 +1,8 @@
 #include <vector>
 #include <unordered_map>
 #include <algorithm>
+#include <cstdlib>
+#include <cmath>
 using namespace std;
 
 // 454 4Sum II
