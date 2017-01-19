@@ -1,13 +1,13 @@
 #include <cstddef>
 #include <vector>
 #include <iostream>
-#include "sum_alg.h"
+#include "linkedlist.h"
 using namespace std;
 
 int main() {
-    vector<int> nums = {-2, 0, 1, 3, -5, 3, 5, 7, 9, 10, -6, 0, 0, 10};
-    int target = 5;
-    int result = threeSumSmaller(nums, target);
-    cout << "The result is " << result << endl;
+    vector<int> vec = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    ListNode* head = buildLinkedListFromVec(vec);
+    displayLinkedList(head);
+    deleteLinkedList(head);
     return 0;
 }

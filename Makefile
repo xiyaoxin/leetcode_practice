@@ -7,10 +7,10 @@ CC = g++
 CFLAGS = -std=c++11
 
 # define all the sources
-SRCS = tree.cpp tree_ext.cpp leetcode.cpp sum_alg.cpp
+SRCS = tree.cpp tree_ext.cpp leetcode.cpp sum_alg.cpp linkedlist.cpp
 
 # define all the headers
-INCLUDES = tree.h tree_ext.h sum_alg.h
+INCLUDES = tree.h tree_ext.h sum_alg.h linkedlist.h
 
 # define all the object files
 OBJS = $(SRCS:.cpp=.o)
@@ -42,6 +42,10 @@ tree_ext.o: tree_ext.cpp tree.h
 # sum related algorithm problems
 sum_alg.o: sum_alg.cpp sum_alg.h
 	$(CC) $(CFLAGS) -c sum_alg.cpp
+
+# linked list basic module
+linkedlist.o: linkedlist.cpp linkedlist.h
+	$(CC) $(CFLAGS) -c linkedlist.cpp
 
 clean:
 	$(RM) $(TARGET) *.o

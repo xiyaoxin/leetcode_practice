@@ -1,8 +1,39 @@
-In file included from tree.cpp:3:0:
-tree.h:5:8: error: redefinition of ‘struct TreeNode’
- struct TreeNode {
-        ^
-In file included from <command-line>:0:0:
-./tree.h:5:8: error: previous definition of ‘struct TreeNode’
- struct TreeNode {
-        ^
+g++ -std=c++11 -c sum_alg.cpp
+sum_alg.cpp:106:15: error: call to 'abs' is ambiguous
+    int gap = abs(target - nums[0] - nums[1] - nums[2]);
+              ^~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:664:1: note: candidate function
+abs(float __lcpp_x) _NOEXCEPT {return fabsf(__lcpp_x);}
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:668:1: note: candidate function
+abs(double __lcpp_x) _NOEXCEPT {return fabs(__lcpp_x);}
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:672:1: note: candidate function
+abs(long double __lcpp_x) _NOEXCEPT {return fabsl(__lcpp_x);}
+^
+sum_alg.cpp:121:17: error: call to 'abs' is ambiguous
+            if (abs(rem) < gap) {
+                ^~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:664:1: note: candidate function
+abs(float __lcpp_x) _NOEXCEPT {return fabsf(__lcpp_x);}
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:668:1: note: candidate function
+abs(double __lcpp_x) _NOEXCEPT {return fabs(__lcpp_x);}
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:672:1: note: candidate function
+abs(long double __lcpp_x) _NOEXCEPT {return fabsl(__lcpp_x);}
+^
+sum_alg.cpp:122:23: error: call to 'abs' is ambiguous
+                gap = abs(rem);
+                      ^~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:664:1: note: candidate function
+abs(float __lcpp_x) _NOEXCEPT {return fabsf(__lcpp_x);}
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:668:1: note: candidate function
+abs(double __lcpp_x) _NOEXCEPT {return fabs(__lcpp_x);}
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cmath:672:1: note: candidate function
+abs(long double __lcpp_x) _NOEXCEPT {return fabsl(__lcpp_x);}
+^
+3 errors generated.
+make: *** [sum_alg.o] Error 1
