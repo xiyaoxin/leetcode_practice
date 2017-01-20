@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 #include "linkedlist.h"
 
 // 24 Swap Nodes in Pairs
@@ -36,4 +37,34 @@ ListNode* swapPairsRecursive(ListNode* head) {
     nextNode->next = head;
 
     return nextNode;
+}
+
+// Reverse a linked list
+ListNode* reverseLinkedListSub(ListNode* head, ListNode* newHead) {
+    if (nullptr == newHead) return head;
+    ListNode* next = newHead->next;
+    newHead->next = head;
+    return reverseLinkedListSub(newHead, next);
+}
+
+ListNode* reverseLinkedList(ListNode* head) {
+    return reverseLinkedListSub(nullptr, head);
+}
+
+// reverse k-group
+ListNode* reverseKGroup(ListNode* head, int k) {
+    ListNode fakeHead = ListNode(0);
+    fakeHead.next = head;
+    ListNode* prev = &fakeHead;
+
+    ListNode* node = head;
+    for(int i = 0; i < k; i++) {
+        if (nullptr == node) return head;
+        prev = node;
+        node = node->next;
+    }
+    prev->next = nullptr;
+    ListNode* newHead = reverseLinkedList(head);
+    head->next = reverseKGroup(node, k);
+    return newHead;
 }
