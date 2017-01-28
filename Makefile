@@ -8,10 +8,10 @@ CFLAGS = -std=c++11
 
 # define all the sources
 SRCS = tree.cpp tree_ext.cpp leetcode.cpp sum_alg.cpp linkedlist.cpp linkedlist_ext.cpp \
-       math_alg.cpp
+       math_alg.cpp arr_alg.cpp
 
 # define all the headers
-INCLUDES = tree.h tree_ext.h sum_alg.h linkedlist.h linkedlist_ext.h math_alg.h
+INCLUDES = tree.h tree_ext.h sum_alg.h linkedlist.h linkedlist_ext.h math_alg.h arr_alg.h
 
 # define all the object files
 OBJS = $(SRCS:.cpp=.o)
@@ -56,5 +56,8 @@ linkedlist_ext.o: linkedlist_ext.cpp linkedlist_ext.h
 math_alg.o: math_alg.cpp math_alg.h
 	$(CC) $(CFLAGS) -c math_alg.cpp
 
+# array algorithm module
+arr_alg.o: arr_alg.cpp arr_alg.h
+	$(CC) $(CFLAGS) -c arr_alg.cpp
 clean:
 	$(RM) $(TARGET) *.o
